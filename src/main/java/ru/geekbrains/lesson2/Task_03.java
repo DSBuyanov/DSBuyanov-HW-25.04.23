@@ -1,36 +1,39 @@
-// Посчитайте сколько драгоценных камней в куче обычных камней.
+// Заполнить список названиями планет Солнечной системы в произвольном порядке с повторениями.
+// Вывести название каждой планеты и количество его повторений в списке.
 
 package ru.geekbrains.lesson2;
 
-// import java.util.Scanner;
+import java.util.*;
 
 public class Task_03 {
     public static void main(String[] args) {
-        String jewels = "aB";
-        String stones = "aaaAbbbB";
+        List<String> planets = new ArrayList<>();
+        planets.add("Меркурий");
+        planets.add("Венера");
+        planets.add("Земля");
+        planets.add("Марс");
+        planets.add("Юпитер");
+        planets.add("Сатурн");
+        planets.add("Уран");
+        planets.add("Нептун");
+        planets.add("Земля");
+        planets.add("Венера");
 
-        String result = countGemstones(jewels, stones);
-        System.out.println(result);
-    }
-
-    public static String countGemstones(String jewels, String stones) {
-        int[] count = new int[64]; // массив для подсчета количества камней каждого типа
-
-        // перебираем все камни и увеличиваем соответствующий счетчик
-        for (int i = 0; i < stones.length(); i++) {
-            char c = stones.charAt(i);
-            count[c - 'A']++;
+        Map<String, Integer> planetCounts = new HashMap<>();
+        for (String planet : planets) {
+            Integer count = planetCounts.get(planet);
+            if (count == null) {
+                planetCounts.put(planet, 1);
+            } else {
+                planetCounts.put(planet, count + 1);
+            }
         }
 
-        // перебираем все драгоценные камни и добавляем количество их вхождений
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < jewels.length(); i++) {
-            char c = jewels.charAt(i);
-            result.append(c);
-            result.append(count[c - 'A']);
+        for (Map.Entry<String, Integer> entry : planetCounts.entrySet()) {
+            String planet = entry.getKey();
+            Integer count = entry.getValue();
+            System.out.println(planet + ": " + count);
         }
-
-        return result.toString();
     }
     
 }

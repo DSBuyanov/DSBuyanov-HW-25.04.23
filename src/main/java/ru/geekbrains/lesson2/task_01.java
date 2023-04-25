@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Task_01 {
+final class Task_01 {
     public static void main(String[] args) {
         List<Integer> numbers = new ArrayList<>();
         numbers.add(1);
