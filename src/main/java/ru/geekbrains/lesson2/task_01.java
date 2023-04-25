@@ -1,31 +1,30 @@
-// Вам дается строка S и целочисленный массив индексов int index[s.length].
-// Напишите программу, которая перетасует символы в S таким образом,
-// что символ c i-й позиции переместится на индекс index[i] в результирующей строке.
+// Пусть дан произвольный список целых чисел, удалить из него четные числа
 
 
 package ru.geekbrains.lesson2;
 
-public class task_01 {
-    public static void main(String[] args) {
-        String s = "dcba";
-        int[] index = { 3, 2, 1, 0 };
-        String result = shuffle(s, index);
-        System.out.println(result); // "abc"
-    }
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-    public static String shuffle(String s, int[] index) {
-        if (s == null || index == null || s.length() != index.length) {
-            throw new IllegalArgumentException("Некорректный ввод данных");
-        }
-        char[] shuffled = new char[s.length()];
-        for (int i = 0; i < s.length(); i++) {
-            int newIndex = index[i];
-            if (newIndex < 0 || newIndex >= s.length()) {
-                throw new IllegalArgumentException("Некорректный ввод данных");
+public class Task_01 {
+    public static void main(String[] args) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(4);
+        numbers.add(5);
+
+        Iterator<Integer> iterator = numbers.iterator();
+        while (iterator.hasNext()) {
+            Integer number = iterator.next();
+            if (number % 2 == 0) {
+                iterator.remove();
             }
-            shuffled[newIndex] = s.charAt(i);
         }
-        return new String(shuffled);
+
+        System.out.println(numbers);
     }
 }
 

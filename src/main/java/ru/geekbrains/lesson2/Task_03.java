@@ -4,7 +4,7 @@ package ru.geekbrains.lesson2;
 
 // import java.util.Scanner;
 
-public class task_00 {
+public class Task_03 {
     public static void main(String[] args) {
         String jewels = "aB";
         String stones = "aaaAbbbB";
